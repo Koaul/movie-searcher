@@ -8,6 +8,7 @@ const searchMovies = data => async (dispatch) => {
     try {
       const response = await movie.searchMovie(data);
       dispatch(search(response.data))
+      console.log(response.data)
     } catch (error) {
       console.error(error);
     }
@@ -17,7 +18,6 @@ const getMovie = data => async (dispatch) => {
     try {
       const response = await movie.gotoMovie(data);
       dispatch(gotoMovie(response.data))
-      console.log(response.data)
     } catch (error) {
       console.error(error);
     }

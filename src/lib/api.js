@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = () => axios.create({
-    baseURL: 'http://www.omdbapi.com/',
+    baseURL: 'https://www.omdbapi.com/',
 });
 
 const searchMovie = (data) => api().get(`?s=${data}&apikey=7a9de037`);
