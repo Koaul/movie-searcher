@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/movie-searcher/static/js/main.06067513.chunk.js",
-    "main.js.map": "/movie-searcher/static/js/main.06067513.chunk.js.map",
+    "main.js": "/movie-searcher/static/js/main.027775e2.chunk.js",
+    "main.js.map": "/movie-searcher/static/js/main.027775e2.chunk.js.map",
     "runtime~main.js": "/movie-searcher/static/js/runtime~main.ed79a067.js",
     "runtime~main.js.map": "/movie-searcher/static/js/runtime~main.ed79a067.js.map",
     "static/js/2.a0889a2b.chunk.js": "/movie-searcher/static/js/2.a0889a2b.chunk.js",
     "static/js/2.a0889a2b.chunk.js.map": "/movie-searcher/static/js/2.a0889a2b.chunk.js.map",
     "index.html": "/movie-searcher/index.html",
-    "precache-manifest.5fd44b3c5afbecebac3367013f97ece4.js": "/movie-searcher/precache-manifest.5fd44b3c5afbecebac3367013f97ece4.js",
+    "precache-manifest.35d471676a8efc1ea47fe3f606f13bb3.js": "/movie-searcher/precache-manifest.35d471676a8efc1ea47fe3f606f13bb3.js",
     "service-worker.js": "/movie-searcher/service-worker.js"
   }
 }
