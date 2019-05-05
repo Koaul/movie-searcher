@@ -62,7 +62,7 @@ const Button = styled.button`
     }
 `
 
-const Input = ({searchMovies}) => {
+const Input = ({searchMovies, searchLoading}) => {
     const [text, setText] = useState("")
     const handleChange = ({target}) => setText(target.value)
     const handleSubmit = (e) => {

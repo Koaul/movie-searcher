@@ -1,10 +1,9 @@
 import React from 'react'
 import Input from './Input'
 import styled from 'styled-components'
-import Movie from './Movie'
-import {connect} from 'react-redux'
-import PropTypes from 'prop-types'
+import MovieList from './MovieList'
 import Page from './Page'
+import {connect} from 'react-redux'
 
 const Div = styled.div`
     width:100%;
@@ -14,26 +13,20 @@ const Div = styled.div`
     align-items:center;
 `
 
-const App = ({Movies}) => (
-    <Div>
-        <Input/>
-        {
-            Movies ? Movies.map((item, i)=>{
-                return <Movie key={i*Math.random()*100} item={item}/>
-            }) : "Nothing here"
-        }
-        {
-            Movies ? <Page/> : null
-        }
-    </Div>
-)
-
-App.propTypes = {
-    Movies: PropTypes.array
+const App = ({isLoading, pageCount}) => {
+    return (
+        <Div>
+            <Input/>
+            <MovieList/>
+            <Page/>
+        </Div>
+    )
 }
+
 
 export default connect(
     state => ({
-        Movies: state.Search
+        isLoading: state.isLoading,
+        pageCount: Math.round(state.totalResults/10)
     })
 )(App)

@@ -7,6 +7,7 @@ import styled from 'styled-components'
 const Div = styled.div`
     font-size:36px;
     margin-bottom: 5vh;
+    display: ${props => props.pageCount<=1 ? 'none' : 'block'}
 `
 
 const Button = styled.button`
@@ -33,15 +34,19 @@ const Button = styled.button`
     }
 `
 
-const Page = ({title, page, searchMovies, pageCount}) => {
+const Page = ({response, title, page, searchMovies, pageCount, isLoading}) => {
+    if(isLoading) return null
+    if(response==='False')  return null
+    if(!title) return null
+
     const handleButton = (type) => {
-        if(type==='next'&&page!==pageCount){
+        if(type==='next'&&page<pageCount){
             searchMovies({
                 title: title,
                 page: page+1
             })
         }
-        if(type==='prev'&&page!==1){
+        if(type==='prev'&&page>1){
             searchMovies({
                 title: title,
                 page: page-1
@@ -50,7 +55,7 @@ const Page = ({title, page, searchMovies, pageCount}) => {
     }
 
     return (
-        <Div>
+        <Div pageCount={pageCount}>
             <Button onClick={()=>handleButton('prev')}>Prev</Button>
             {page}
             <Button onClick={()=>handleButton('next')}>Next</Button>
@@ -69,7 +74,9 @@ export default connect(
     state => ({
         title: state.title,
         page: state.page,
-        pageCount: Math.round(state.totalResults/10)
+        pageCount: Math.round(state.totalResults/10),
+        isLoading: state.isLoading,
+        response: state.Response
     }),
     {
         searchMovies: actions.searchMovies

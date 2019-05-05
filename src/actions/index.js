@@ -4,13 +4,16 @@ import movie from '../lib/api'
 const search = createAction('search')
 const gotoMovie = createAction('gotoMovie')
 const setData = createAction('setData')
+const isLoading = createAction('isLoading')
 
 const searchMovies = (data) => async (dispatch) => {
     const {page,title} = data
+    dispatch(isLoading(true))
     dispatch(setData(data))
     try {
       const response = await movie.searchMovie(title, page);
       dispatch(search(response.data, page))
+      dispatch(isLoading(false))
     } catch (error) {
       console.error(error);
     }

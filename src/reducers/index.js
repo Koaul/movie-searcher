@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions'
 
-const initialState = {}
+const initialState = {isLoading: false}
 
 export default handleActions(
     {
@@ -13,9 +13,13 @@ export default handleActions(
             ...action.payload
         }),
         'setData': (state, action) => ({
-                ...state,
-                page: action.payload.page,
-                title: action.payload.title
+            ...state,
+            page: action.payload.page,
+            title: action.payload.title
+        }),
+        'isLoading': (state, action) => ({
+            ...state,
+            isLoading: action.payload
         })
     },
     initialState
