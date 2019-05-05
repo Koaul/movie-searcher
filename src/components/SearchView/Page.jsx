@@ -7,11 +7,14 @@ import styled from 'styled-components'
 const Div = styled.div`
     font-size:36px;
     margin-bottom: 5vh;
-    display: ${props => props.pageCount<=1 ? 'none' : 'block'}
+    display: ${props => props.pageCount<=1 ? 'none' : 'flex'};
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    width:600px;
 `
 
 const Button = styled.button`
-    margin:50px;
     background-color: white;
     font-size:36px;
     border-radius:5px;
@@ -32,6 +35,12 @@ const Button = styled.button`
     &:focus, &:active {
         outline:none;
     }
+`
+
+const Prev = styled.div`
+    margin:50px;
+    width: 86px;
+    height:45px;
 `
 
 const Page = ({response, title, page, searchMovies, pageCount, isLoading}) => {
@@ -56,9 +65,13 @@ const Page = ({response, title, page, searchMovies, pageCount, isLoading}) => {
 
     return (
         <Div pageCount={pageCount}>
-            <Button onClick={()=>handleButton('prev')}>Prev</Button>
-            {page}
-            <Button onClick={()=>handleButton('next')}>Next</Button>
+            <Prev>
+                {page===1 ? null : <Button onClick={()=>handleButton('prev')}>Prev</Button>}
+            </Prev>
+            <span>{page}</span>
+            <Prev>
+                {page===pageCount ? null : <Button onClick={()=>handleButton('next')}>Next</Button>}
+            </Prev>
         </Div>
     )
 }
