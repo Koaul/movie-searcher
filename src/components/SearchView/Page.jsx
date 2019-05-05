@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import actions from '../../actions'
@@ -33,22 +33,21 @@ const Button = styled.button`
     }
 `
 
-const Page = ({pages, title, searchMovies}) => {
-    const [page, setPage] = useState(1)
+const Page = ({title, page, searchMovies, pageCount}) => {
     const handleButton = (type) => {
-        if(type==='prev'&&page!==1){
-            setPage(page-1)
+        if(type==='next'&&page!==pageCount){
+            searchMovies({
+                title: title,
+                page: page+1
+            })
         }
-        if(type==='next'&&page!==pages){
-            setPage(page+1)
+        if(type==='prev'&&page!==1){
+            searchMovies({
+                title: title,
+                page: page-1
+            })
         }
     }
-
-    useEffect(
-        () => {
-            searchMovies(title, page)
-        }, [title, page, searchMovies]
-    )
 
     return (
         <Div>
@@ -61,14 +60,16 @@ const Page = ({pages, title, searchMovies}) => {
 
 Page.propTypes = {
     title: PropTypes.string,
-    pages: PropTypes.number,
-    searchMovies: PropTypes.func.isRequired
+    pageCount: PropTypes.number,
+    searchMovies: PropTypes.func.isRequired,
+    page: PropTypes.number
 }
 
 export default connect(
     state => ({
-        pages: Math.round(state.totalResults/10),
-        title: state.title
+        title: state.title,
+        page: state.page,
+        pageCount: Math.round(state.totalResults/10)
     }),
     {
         searchMovies: actions.searchMovies

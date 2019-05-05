@@ -36,6 +36,7 @@ const Poster = styled.img`
     width:170px;
     height:250px;
     border-radius: 10px;
+    box-sizing:border-box;
 `
 const Year = styled.span`
     font-size: 18px;

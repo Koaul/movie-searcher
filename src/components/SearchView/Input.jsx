@@ -67,7 +67,7 @@ const Input = ({searchMovies}) => {
     const handleChange = ({target}) => setText(target.value)
     const handleSubmit = (e) => {
         e.preventDefault()
-        searchMovies(text, 1)
+        searchMovies({title: text, page: 1})
     }
 
     return (

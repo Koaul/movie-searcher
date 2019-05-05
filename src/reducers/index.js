@@ -4,17 +4,18 @@ const initialState = {}
 
 export default handleActions(
     {
-        'searchTitle': (state, action) => ({
-            ...state,
-            title: action.payload
-        }),
         'search': (state, action) => ({
-            title: state.title,
+            ...state,
             ...action.payload
         }),
         'gotoMovie': (state, action) => ({
             ...state,
             ...action.payload
+        }),
+        'setData': (state, action) => ({
+                ...state,
+                page: action.payload.page,
+                title: action.payload.title
         })
     },
     initialState
