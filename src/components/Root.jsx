@@ -7,7 +7,7 @@ import MovieView from './MovieView/'
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <HashRouter basename='/movie-searcher'>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <Route exact path="/" component={SearchView} />
       <Route path="/movie/:id" component={MovieView} />
     </HashRouter>

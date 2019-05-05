@@ -3,12 +3,13 @@ import movie from '../lib/api'
 
 const search = createAction('search')
 const gotoMovie = createAction('gotoMovie')
+const searchTitle = createAction('searchTitle')
 
-const searchMovies = data => async (dispatch) => {
+const searchMovies = (data, page) => async (dispatch) => {
     try {
-      const response = await movie.searchMovie(data);
-      dispatch(search(response.data))
-      console.log(response.data)
+      const response = await movie.searchMovie(data, page);
+      dispatch(searchTitle(data))
+      dispatch(search(response.data, page))
     } catch (error) {
       console.error(error);
     }

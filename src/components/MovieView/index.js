@@ -46,7 +46,7 @@ const Description = styled.p`
 `
 const MovieView = ({movieInfo, getMovie, match}) => {
     if(!movieInfo.Title) getMovie(match.params.id)
-
+    
     return (
         <Div>
             {movieInfo.Poster!=="N/A" ? <Poster src={movieInfo.Poster}/> : null}

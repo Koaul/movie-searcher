@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Movie from './Movie'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
+import Page from './Page'
 
 const Div = styled.div`
     width:100%;
@@ -20,6 +21,9 @@ const App = ({Movies}) => (
             Movies ? Movies.map((item, i)=>{
                 return <Movie key={i*Math.random()*100} item={item}/>
             }) : "Nothing here"
+        }
+        {
+            Movies ? <Page/> : null
         }
     </Div>
 )
