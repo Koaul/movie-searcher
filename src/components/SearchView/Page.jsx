@@ -37,7 +37,7 @@ const Button = styled.button`
     }
 `
 
-const Prev = styled.div`
+const ButtonContainer = styled.div`
     margin:50px;
     width: 86px;
     height:45px;
@@ -65,13 +65,13 @@ const Page = ({response, title, page, searchMovies, pageCount, isLoading}) => {
 
     return (
         <Div pageCount={pageCount}>
-            <Prev>
+            <ButtonContainer>
                 {page===1 ? null : <Button onClick={()=>handleButton('prev')}>Prev</Button>}
-            </Prev>
+            </ButtonContainer>
             <span>{page}</span>
-            <Prev>
+            <ButtonContainer>
                 {page===pageCount ? null : <Button onClick={()=>handleButton('next')}>Next</Button>}
-            </Prev>
+            </ButtonContainer>
         </Div>
     )
 }
